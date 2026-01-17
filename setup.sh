@@ -37,14 +37,25 @@ if [ "$SKIP_ENV" != true ]; then
 
     read -p "Enter Supabase URL: " sb_url
     read -p "Enter Supabase Service Role Key: " sb_key
+
     read -p "Enter Groq API Key: " groq_key
+
+    read -p "Enter GNews API Key: " gnews_key
+    read -p "Enter Finnhub API Key: " finnhub_key
+    read -p "Enter CryptoPanic API Key: " cp_key
+
     read -p "Enter Telegram Bot Token (optional): " tg_token
     read -p "Enter Telegram Chat ID (optional): " tg_id
+
+    read -p "Enter Binance API Key: " binance_key
+    read -p "Enter Binance API Secret: " binance_secret
 
     cat <<EOF > .env.dev
 # OMEGA CONFIG
 SUPABASE_URL=$sb_url
 SUPABASE_KEY=$sb_key
+
+# AI CONFIG
 GROQ_API_KEY=$groq_key
 
 # NOTIFICATIONS
@@ -52,8 +63,13 @@ TELEGRAM_BOT_TOKEN=$tg_token
 TELEGRAM_CHAT_ID=$tg_id
 
 # EXCHANGES
-BINANCE_API_KEY=
-BINANCE_API_SECRET=
+BINANCE_API_KEY=$binance_key
+BINANCE_API_SECRET=$binance_secret
+
+# NEWS
+CRYPTOPANIC_API_KEY=$cp_key
+GNEWS_API_KEY=$gnews_key
+FINNHUB_API_KEY=$finnhub_key
 EOF
     echo -e "${GREEN}✅ .env file created.${NC}\n"
 fi
